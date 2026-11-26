@@ -6,15 +6,26 @@
 <title>Dreamscape Publications</title>
 <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#14305a;--sun:#f9b91c;--sky:#7fcdee;--leaf:#6a9a2a;--tang:#f28c1e;--bg:#fffcf5;--card:#fff;--ink:#1d2b45;--mute:#5b6882;--line:#e6e0d0;--band:#eaf6fc;--dk:#14305a;--dkink:#f4f7fb;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a30;--card:#16264a;--ink:#eef2f8;--mute:#a9b6cf;--line:#2a3d66;--band:#12223f;--dk:#0a1426;--navy:#cfe3ff}}
+:root{
+  --navy:#14305a;--sun:#f9b91c;--sky:#7fcdee;--leaf:#6a9a2a;--tang:#f28c1e;
+  --bg:#fffcf5;--card:#fff;--ink:#1d2b45;--mute:#5b6882;--line:#e6e0d0;
+  --band:#eaf6fc;--dk:#14305a;--dkink:#f4f7fb;
+  box-sizing:border-box;
+}
+*{box-sizing:border-box}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a30;--card:#16264a;--ink:#eef2f8;--mute:#a9b6cf;
+    --line:#2a3d66;--band:#12223f;--dk:#0a1426;--navy:#cfe3ff;
+  }
+}
 :root[data-theme="dark"]{--bg:#0e1a30;--card:#16264a;--ink:#eef2f8;--mute:#a9b6cf;--line:#2a3d66;--band:#12223f;--dk:#0a1426;--navy:#cfe3ff}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
-*{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Nunito,system-ui,sans-serif}
 h1,h2,h3{font-family:'Caveat Brush','Segoe Print',cursive;color:var(--navy);line-height:1.1;margin:0 0 .4em;font-weight:400}
-h1{font-size:clamp(2.8rem,7vw,4.8rem)}h2{font-size:clamp(2.2rem,5vw,3.2rem)}h3{font-size:1.6rem}
+h1{font-size:clamp(2.8rem,7vw,4.8rem)}
+h2{font-size:clamp(2.2rem,5vw,3.2rem)}
+h3{font-size:1.6rem}
 a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 section{padding:72px 0}
@@ -31,8 +42,11 @@ nav a.l:hover{color:var(--tang)}
 .btn[disabled]{opacity:.5;cursor:not-allowed}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--tang);outline-offset:2px}
 #menu{display:none;background:none;border:0;font-size:1.6rem;color:var(--ink)}
-@media(max-width:820px){nav .links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:12px 20px;border-bottom:2px solid var(--line)}nav .links.open{display:flex}#menu{display:block}}
 nav .links{display:flex;gap:18px}
+@media(max-width:820px){
+  nav .links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:12px 20px;border-bottom:2px solid var(--line)}
+  nav .links.open{display:flex}#menu{display:block}
+}
 .hero{padding:56px 0 24px;background:linear-gradient(var(--band),var(--bg))}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
 @media(max-width:820px){.hero .wrap{grid-template-columns:1fr}}
@@ -50,7 +64,9 @@ nav .links{display:flex;gap:18px}
 .cover{aspect-ratio:3/4;border-radius:4px 14px 14px 4px;padding:18px 16px 18px 26px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 10px 0 0 rgba(0,0,0,.18),0 10px 18px -8px rgba(20,48,90,.5);position:relative}
 .cover b{font:400 1.55rem/1.1 'Caveat Brush',cursive;text-shadow:0 2px 0 rgba(0,0,0,.2)}
 .cover i{font-style:normal;font-size:3.2rem}
-.badge{position:absolute;top:-8px;right:-8px;background:var(--tang);color:#fff;font:800 .78rem Nunito;padding:3px 10px;border-radius:999px;border:2px solid var(--bg)}
+.cover.photo{padding:0;overflow:hidden;position:relative}
+.cover.photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:4px 14px 14px 4px}
+.badge{position:absolute;top:-8px;right:-8px;background:var(--tang);color:#fff;font:800 .78rem Nunito;padding:3px 10px;border-radius:999px;border:2px solid var(--bg);z-index:2}
 .book small{color:var(--leaf);font-weight:800}
 .book p{margin:0;font-size:.93rem;color:var(--mute)}
 .about{background:var(--band)}
@@ -66,12 +82,14 @@ nav .links{display:flex;gap:18px}
 .cat .e{font-size:2.2rem;display:block}
 .cat p{margin:.2em 0 0;color:var(--mute);font-size:.92rem}
 .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:20px}
-.team .panel h3{font-size:1.4rem;margin-bottom:.2em}.team .panel p{margin:0;font-size:.93rem;color:var(--mute)}
+.team .panel h3{font-size:1.4rem;margin-bottom:.2em}
+.team .panel p{margin:0;font-size:.93rem;color:var(--mute)}
 .org{display:flex;flex-direction:column;align-items:center;gap:8px;margin:26px 0 0;font-weight:800;text-align:center}
 .org span{background:var(--navy);color:var(--bg);padding:8px 20px;border-radius:12px}
 .org em{font-style:normal;color:var(--mute);font-weight:600;font-size:.9rem}
 .careers{background:var(--dk);color:var(--dkink);position:relative;overflow:hidden}
-.careers h2,.careers h3{color:var(--sun)}.careers .lead{color:#b8c7e0}
+.careers h2,.careers h3{color:var(--sun)}
+.careers .lead{color:#b8c7e0}
 .careers:before{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:var(--sun);opacity:.14}
 .jobs{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));margin-top:26px;position:relative}
 .job{background:#fff;color:#1d2b45;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px;border-top:8px solid var(--sky)}
@@ -80,8 +98,9 @@ nav .links{display:flex;gap:18px}
 .job p{margin:0;font-size:.93rem;color:#4d5a73}
 .meta{display:flex;flex-wrap:wrap;gap:6px;font-size:.8rem;font-weight:800}
 .meta span{background:#eaf6fc;color:#14305a;border-radius:8px;padding:2px 9px}
-.meta .st{background:#dff0c4;color:#3d6a0d}.closed .meta .st{background:#e5e8ee;color:#59647a}
-.job .row{margin-top:auto;display:flex;gap:10px;padding-top:8px}
+.meta .st{background:#dff0c4;color:#3d6a0d}
+.closed .meta .st{background:#e5e8ee;color:#59647a}
+.job .row{margin-top:auto;display:flex;gap:10px;padding-top:8px;flex-wrap:wrap}
 .how{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;color:#b8c7e0;font-size:.95rem}
 .how b{color:#fff}
 .soc{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
@@ -110,229 +129,415 @@ dialog::backdrop{background:rgba(10,20,38,.65)}
 </style>
 </head>
 <body>
-<nav><div class="wrap">
-<a class="brand" href="#home">Dreamscape Publications</a>
-<div class="links" id="links">
-<a class="l" href="#about">About</a><a class="l" href="#books">Books</a><a class="l" href="#categories">Categories</a><a class="l" href="#team">Team</a><a class="l" href="#careers">Careers</a><a class="l" href="#social">Social</a><a class="l" href="#contact">Contact</a></div>
-<a class="btn sm" href="#careers">We’re hiring</a>
-<button id="menu" aria-label="Menu">☰</button>
-</div></nav>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#home">Dreamscape Publications</a>
+    <div class="links" id="links">
+      <a class="l" href="#about">About</a><a class="l" href="#books">Books</a>
+      <a class="l" href="#categories">Categories</a><a class="l" href="#team">Team</a>
+      <a class="l" href="#careers">Careers</a><a class="l" href="#social">Social</a>
+      <a class="l" href="#contact">Contact</a>
+    </div>
+    <a class="btn sm" href="#careers">We’re hiring</a>
+    <button id="menu" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
 
-<header class="hero" id="home"><div class="wrap">
-<div>
-<h1>Books that open up whole worlds</h1>
-<p class="lead" id="tag"></p>
-<div class="ctas"><a class="btn" href="#books">Browse our books</a><a class="btn alt" href="#careers">Join our team</a></div>
-</div>
-<svg viewBox="0 0 420 330" role="img" aria-label="An open book with a sun and clouds rising from its pages">
-<g stroke="#f9b91c" stroke-width="12" stroke-linecap="round"><path d="M210 22v38M140 48l22 30M280 48l-22 30M88 100l34 18M332 100l-34 18"/></g>
-<circle cx="210" cy="140" r="64" fill="#f9b91c"/>
-<path d="M30 250l54-120q8-18 30-10l96 30 96-30q22-8 30 10l54 120-100-14-80 28-80-28z" fill="#6a9a2a" stroke="#14305a" stroke-width="7" stroke-linejoin="round"/>
-<path d="M62 232l42-96q4-10 16-6l90 28 90-28q12-4 16 6l42 96-76-10-72 26-72-26z" fill="#fff8e8" stroke="#14305a" stroke-width="7" stroke-linejoin="round"/>
-<path d="M92 190q-12-34 22-40 6-24 36-16 20-18 44 0 24-10 36 10 38-14 50 24 16 6 18 20-30 10-64 2-30 18-58 16-30 8-84-16z" fill="#7fcdee"/>
-<path d="M300 222v62l20-14 20 14v-56z" fill="#f28c1e" stroke="#14305a" stroke-width="5" stroke-linejoin="round"/>
-<g fill="#f9b91c"><path d="M56 70l6 14 14 6-14 6-6 14-6-14-14-6 14-6z"/><path d="M96 40l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/></g>
-</svg>
-</div>
-<div class="wrap"><div class="quick">
-<a href="#books">Our books<span>Find your next read</span></a>
-<a href="#careers">Careers<span>Remote internships and roles</span></a>
-<a href="#contact">Contact<span>Questions and partnerships</span></a>
-</div></div>
+<header class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <h1>Books that open up whole worlds</h1>
+      <p class="lead" id="tag"></p>
+      <div class="ctas"><a class="btn" href="#books">Browse our books</a><a class="btn alt" href="#careers">Join our team</a></div>
+    </div>
+    <svg viewBox="0 0 420 330" role="img" aria-label="An open book with a sun and clouds rising from its pages">
+      <g stroke="#f9b91c" stroke-width="12" stroke-linecap="round"><path d="M210 22v38M140 48l22 30M280 48l-22 30M88 100l34 18M332 100l-34 18"/></g>
+      <circle cx="210" cy="140" r="64" fill="#f9b91c"/>
+      <path d="M30 250l54-120q8-18 30-10l96 30 96-30q22-8 30 10l54 120-100-14-80 28-80-28z" fill="#6a9a2a" stroke="#14305a" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M62 232l42-96q4-10 16-6l90 28 90-28q12-4 16 6l42 96-76-10-72 26-72-26z" fill="#fff8e8" stroke="#14305a" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M92 190q-12-34 22-40 6-24 36-16 20-18 44 0 24-10 36 10 38-14 50 24 16 6 18 20-30 10-64 2-30 18-58 16-30 8-84-16z" fill="#7fcdee"/>
+      <path d="M300 222v62l20-14 20 14v-56z" fill="#f28c1e" stroke="#14305a" stroke-width="5" stroke-linejoin="round"/>
+      <g fill="#f9b91c"><path d="M56 70l6 14 14 6-14 6-6 14-6-14-14-6 14-6z"/><path d="M96 40l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/></g>
+    </svg>
+  </div>
+  <div class="wrap"><div class="quick">
+    <a href="#books">Our books<span>Find your next read</span></a>
+    <a href="#careers">Careers<span>Remote internships and roles</span></a>
+    <a href="#contact">Contact<span>Questions and partnerships</span></a>
+  </div></div>
 </header>
 
 <section id="featured"><div class="wrap">
-<h2>Featured and new</h2><p class="lead">Fresh from our desk.</p>
-<div class="grid" id="feat" style="margin-top:24px"></div>
+  <h2>Featured and new</h2><p class="lead">Fresh from our desk.</p>
+  <div class="grid" id="feat" style="margin-top:24px"></div>
 </div></section>
 
 <section class="about" id="about"><div class="wrap">
-<h2>About Dreamscape</h2>
-<div class="two">
-<p id="aboutTxt" style="margin:0"></p>
-<div class="panel"><h3>Vision</h3><p style="margin-top:0">To create meaningful, engaging, and accessible reading experiences that inspire creativity, imagination, and lifelong learning.</p><h3>Mission</h3><p style="margin:0">To develop and publish quality books for diverse audiences, encourage learning, promote creativity, and make reading enjoyable.</p></div></div>
-<div class="vals">
-<div><b>Creativity</b><p>Original ideas, imaginatively told.</p></div>
-<div><b>Quality</b><p>Careful writing, design, and finishing.</p></div>
-<div><b>Learning</b><p>Books that teach while they delight.</p></div>
-<div><b>Trust</b><p>Honest, professional, reader-first.</p></div>
-</div>
-<h3 style="margin-top:36px">What makes us different</h3>
-<p class="lead" style="margin-top:0">We handle every stage in-house: concept, writing, illustration, layout, and marketing. One small team, one clear voice, and books made for children, families, teachers, and curious readers of every age.</p>
+  <h2>About Dreamscape</h2>
+  <div class="two">
+    <p id="aboutTxt" style="margin:0"></p>
+    <div class="panel">
+      <h3>Vision</h3><p style="margin-top:0">To create meaningful, engaging, and accessible reading experiences that inspire creativity, imagination, and lifelong learning.</p>
+      <h3>Mission</h3><p style="margin:0">To develop and publish quality books for diverse audiences, encourage learning, promote creativity, and make reading enjoyable.</p>
+    </div>
+  </div>
+  <div class="vals">
+    <div><b>Creativity</b><p>Original ideas, imaginatively told.</p></div>
+    <div><b>Quality</b><p>Careful writing, design, and finishing.</p></div>
+    <div><b>Learning</b><p>Books that teach while they delight.</p></div>
+    <div><b>Trust</b><p>Honest, professional, reader-first.</p></div>
+  </div>
+  <h3 style="margin-top:36px">What makes us different</h3>
+  <p class="lead" style="margin-top:0">We handle every stage in-house: concept, writing, illustration, layout, and marketing. One small team, one clear voice, and books made for children, families, teachers, and curious readers of every age.</p>
 </div></section>
 
 <section id="books"><div class="wrap">
-<h2>Our books</h2>
-<div class="chips" id="chips"></div>
-<div class="grid" id="shelf"></div>
+  <h2>Our books</h2>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="shelf"></div>
 </div></section>
 
 <section class="about" id="categories"><div class="wrap">
-<h2>Our categories</h2><p class="lead">Select one to see its books.</p>
-<div class="grid" id="cats" style="margin-top:24px"></div>
+  <h2>Our categories</h2><p class="lead">Select one to see its books.</p>
+  <div class="grid" id="cats" style="margin-top:24px"></div>
 </div></section>
 
 <section id="team"><div class="wrap">
-<h2>Our team</h2>
-<p class="lead">Dreamscape is a young, remote-friendly team. Each department owns one part of the journey from idea to finished book.</p>
-<div class="team">
-<div class="panel"><h3>Editorial & Content</h3><p>Writes and edits books, plans series, and keeps every title consistent.</p></div>
-<div class="panel"><h3>Design & Illustration</h3><p>Creates covers, illustrations, interiors, and print-ready formatting.</p></div>
-<div class="panel"><h3>Marketing & Social Media</h3><p>Runs campaigns and content that connect books with readers.</p></div>
-<div class="panel"><h3>Project & Product</h3><p>Plans timelines, tracks releases, and shapes what we publish next.</p></div>
-<div class="panel"><h3>Public Relations</h3><p>Builds relationships with schools, creators, and media.</p></div>
-<div class="panel"><h3>HR & People</h3><p>Recruits, onboards, and supports interns and team members.</p></div>
-</div>
-<div class="org"><span>Founders & Leadership</span><em>guide direction and publishing plans</em><span>Department leads</span><em>run daily work in their area</em><span>Interns & contributors</span></div>
+  <h2>Our team</h2>
+  <p class="lead">Dreamscape is a young, remote-friendly team. Each department owns one part of the journey from idea to finished book.</p>
+  <div class="team">
+    <div class="panel"><h3>Editorial & Content</h3><p>Writes and edits books, plans series, and keeps every title consistent.</p></div>
+    <div class="panel"><h3>Design & Illustration</h3><p>Creates covers, illustrations, interiors, and print-ready formatting.</p></div>
+    <div class="panel"><h3>Marketing & Social Media</h3><p>Runs campaigns and content that connect books with readers.</p></div>
+    <div class="panel"><h3>Project & Product</h3><p>Plans timelines, tracks releases, and shapes what we publish next.</p></div>
+    <div class="panel"><h3>Public Relations</h3><p>Builds relationships with schools, creators, and media.</p></div>
+    <div class="panel"><h3>HR & People</h3><p>Recruits, onboards, and supports interns and team members.</p></div>
+  </div>
+  <div class="org"><span>Founders & Leadership</span><em>guide direction and publishing plans</em><span>Department leads</span><em>run daily work in their area</em><span>Interns & contributors</span></div>
 </div></section>
 
 <section class="careers" id="careers"><div class="wrap">
-<h2>Careers & opportunities</h2>
-<p class="lead">Learn how a publishing house works by doing real work on real books. All roles are remote.</p>
-<div class="how"><span><b>1.</b> Open a role</span><span><b>2.</b> Fill the application</span><span><b>3.</b> We reply by email</span></div>
-<div class="jobs" id="jobs"></div>
+  <h2>Careers & opportunities</h2>
+  <p class="lead">Learn how a publishing house works by doing real work on real books. All roles are remote.</p>
+  <div class="how"><span><b>1.</b> Open a role</span><span><b>2.</b> Fill the application</span><span><b>3.</b> We reply by email</span></div>
+  <div class="jobs" id="jobs"></div>
 </div></section>
 
 <section id="social"><div class="wrap">
-<h2>Social media</h2>
-<p class="lead">See new covers, behind-the-scenes work, and launch campaigns first.</p>
-<div class="soc" id="socials"></div>
-<div class="grid">
-<div class="panel"><h3>Behind the pages</h3><p style="margin:0">Sketches, drafts, and design choices from our desk.</p></div>
-<div class="panel"><h3>New release spotlights</h3><p style="margin:0">Launch posts with direct links to buy.</p></div>
-<div class="panel"><h3>Reader stories</h3><p style="margin:0">How families and classrooms use our books.</p></div>
-</div></div></section>
+  <h2>Social media</h2><p class="lead">See new covers, behind-the-scenes work, and launch campaigns first.</p>
+  <div class="soc" id="socials"></div>
+  <div class="grid">
+    <div class="panel"><h3>Behind the pages</h3><p style="margin:0">Sketches, drafts, and design choices from our desk.</p></div>
+    <div class="panel"><h3>New release spotlights</h3><p style="margin:0">Launch posts with direct links to buy.</p></div>
+    <div class="panel"><h3>Reader stories</h3><p style="margin:0">How families and classrooms use our books.</p></div>
+  </div>
+</div></section>
 
 <section class="about" id="contact"><div class="wrap">
-<h2>Contact us</h2>
-<div class="two">
-<div><p class="lead" style="margin-top:0">General enquiries, bulk orders for schools, collaborations, or press: write to us and we’ll reply within a few working days.</p><p><b>Email:</b> <a id="mail" href="#"></a></p></div>
-<div class="panel"><h3>Get in touch</h3><p style="margin:0">Email us at the address shown here, or send us a message on Instagram.</p></div></div>
+  <h2>Contact us</h2>
+  <div class="two">
+    <div><p class="lead" style="margin-top:0">General enquiries, bulk orders for schools, collaborations, or press: write to us and we’ll reply within a few working days.</p><p><b>Email:</b> <a id="mail" href="#"></a></p></div>
+    <div class="panel"><h3>Get in touch</h3><p style="margin:0">Email us at the address shown here, or send us a message on Instagram.</p></div>
+  </div>
 </div></section>
 
 <footer><div class="wrap"><span>© 2026 Dreamscape Publications</span><button id="adminBtn">Team login</button></div></footer>
 
-<dialog id="dlg"><div class="dh"><h3 id="dt"></h3><button class="x" aria-label="Close" onclick="dlg.close()">✕</button></div><div class="db" id="dbody"></div></dialog>
+<dialog id="dlg">
+  <div class="dh"><h3 id="dt"></h3><button class="x" id="closeDlg" aria-label="Close">✕</button></div>
+  <div class="db" id="dbody"></div>
+</dialog>
 
 <script>
-const CATS=[['Children’s Books','🧸','Gentle stories and early learning.'],['Coloring Books','🖍️','Pages to color and relax.'],['Activity Books','🧩','Puzzles, mazes, and games.'],['Storybooks','📖','Tales for bedtime and beyond.'],['Notebooks & Journals','📓','Low-content books for daily use.'],['Other Publications','✨','Special and one-off titles.']];
-const J=(t,d,ds,r,s)=>({id:t.toLowerCase().replace(/\W+/g,'-'),title:t,dept:d,desc:ds,resp:r,skills:s,duration:'3 months',hours:'2–3 hours per day',deadline:'',status:'Open',formUrl:''});
+const CATS=[
+  ['Children’s Books','🧸','Gentle stories and early learning.'],
+  ['Coloring Books','🖍️','Pages to color and relax.'],
+  ['Activity Books','🧩','Puzzles, mazes, and games.'],
+  ['Storybooks','📖','Tales for bedtime and beyond.'],
+  ['Notebooks & Journals','📓','Low-content books for daily use.'],
+  ['Other Publications','✨','Special and one-off titles.']
+];
+
+const J=(t,d,ds,r,s)=>({
+  id:t.toLowerCase().replace(/\W+/g,'-'),title:t,dept:d,desc:ds,
+  resp:r,skills:s,duration:'3 months',hours:'2–3 hours per day',
+  deadline:'',status:'Open',formUrl:''
+});
+
 const S={
-settings:{email:'dreamscapepublications@gmail.com',instagram:'https://www.instagram.com/dreamscape_publications',facebook:'',youtube:'',formUrl:'https://forms.gle/2HRANTtvgV9Qg3Ff9',tagline:'Dreamscape Publications creates children’s books, activity and coloring books, journals, and storybooks that entertain, educate, and inspire.',about:'Dreamscape Publications develops and publishes books across genres, with a focus on creativity, learning, and storytelling. Our work spans book development, content creation, design, publishing, and marketing.'},
-books:[
-{id:'b1',title:'The Cloud Kingdom',cat:CATS[3][0],desc:'A sample storybook entry. Replace with your real title.',url:'',color:'#3b9ccf',emoji:'☁️',tag:'Featured'},
-{id:'b2',title:'Color Me Calm',cat:CATS[1][0],desc:'A sample coloring book entry.',url:'',color:'#6a9a2a',emoji:'🌿',tag:'New'},
-{id:'b3',title:'Little Explorers',cat:CATS[2][0],desc:'A sample activity book entry.',url:'',color:'#f28c1e',emoji:'🧭',tag:'Featured'},
-{id:'b4',title:'Daily Dreams Journal',cat:CATS[4][0],desc:'A sample journal entry.',url:'',color:'#14305a',emoji:'🌙',tag:''},
-{id:'b5',title:'Bedtime Beasts',cat:CATS[0][0],desc:'A sample children’s book entry.',url:'',color:'#c2528b',emoji:'🦁',tag:'New'},
-{id:'b6',title:'Word Wonders',cat:CATS[2][0],desc:'A sample puzzle book entry.',url:'',color:'#7a5cc2',emoji:'🔤',tag:''}],
-jobs:[
-J('HR Intern','Human Resources','Support recruitment, onboarding, and team coordination.',['Screen applications','Schedule interviews','Maintain candidate records'],['Clear communication','Organization','Interest in HR']),
-J('HR Psychology Intern','Human Resources','Apply psychology to hiring, engagement, and team wellbeing.',['Help design assessments','Support feedback surveys','Research engagement practices'],['Psychology background','Research skills','Empathy']),
-J('Project Management Intern','Project Management','Keep book projects on schedule across departments.',['Track tasks and deadlines','Run weekly check-ins','Report project status'],['Planning','Spreadsheets or Trello/Notion','Follow-through']),
-J('Product Management Intern','Product Management','Research what readers want and shape new book ideas.',['Research market trends','Compare competing titles','Help define new products'],['Analytical thinking','Curiosity about books','Clear writing']),
-J('PR Intern','Public Relations','Build visibility with media, schools, and creators.',['Draft outreach emails','Build contact lists','Track coverage'],['Strong writing','Confidence','Networking']),
-J('Social Media Content Creator','Marketing','Create posts, reels, and visuals that bring our books to life.',['Make weekly content','Edit short videos','Review post performance'],['Canva or video editing','Creative eye','Platform know-how']),
-J('Content Writer – Social Media','Marketing','Write captions, scripts, and campaign copy.',['Write captions and scripts','Support campaigns','Keep brand voice consistent'],['Concise writing','Trend awareness','Proofreading']),
-J('Content Writer – Books','Editorial','Write and develop original book content.',['Draft stories and activities','Revise with editors','Research age-appropriate topics'],['Storytelling','Grammar','Child-friendly writing'])]
+  settings:{
+    email:'dreamscapepublications@gmail.com',
+    instagram:'https://www.instagram.com/dreamscape_publications',
+    facebook:'',youtube:'',
+    formUrl:'https://forms.gle/2HRANTtvgV9Qg3Ff9',
+    tagline:'Dreamscape Publications creates children’s books, activity and coloring books, journals, and storybooks that entertain, educate, and inspire.',
+    about:'Dreamscape Publications develops and publishes books across genres, with a focus on creativity, learning, and storytelling. Our work spans book development, content creation, design, publishing, and marketing.'
+  },
+  books:[
+    {id:'b1',title:'The Cloud Kingdom',cat:CATS[3][0],desc:'A sample storybook entry. Replace with your real title.',url:'',color:'#3b9ccf',emoji:'☁️',tag:'Featured'},
+    {
+      id:'b2',
+      title:'Little Veggie Friends',
+      cat:CATS[1][0],
+      desc:'25 Cute and Easy Vegetable Coloring Pages for Kids Ages 3–6.',
+      url:'https://a.co/d/06raPJfk',
+      image:'/little-veggie-friends.png',
+      color:'#6a9a2a',
+      emoji:'🥕',
+      tag:'New Release'
+    },
+    {id:'b3',title:'Little Explorers',cat:CATS[2][0],desc:'A sample activity book entry.',url:'',color:'#f28c1e',emoji:'🧭',tag:'Featured'},
+    {id:'b4',title:'Daily Dreams Journal',cat:CATS[4][0],desc:'A sample journal entry.',url:'',color:'#14305a',emoji:'🌙',tag:''},
+    {id:'b5',title:'Bedtime Beasts',cat:CATS[0][0],desc:'A sample children’s book entry.',url:'',color:'#c2528b',emoji:'🦁',tag:'New'},
+    {id:'b6',title:'Word Wonders',cat:CATS[2][0],desc:'A sample puzzle book entry.',url:'',color:'#7a5cc2',emoji:'🔤',tag:''}
+  ],
+  jobs:[
+    J('HR Intern','Human Resources','Support recruitment, onboarding, and team coordination.',['Screen applications','Schedule interviews','Maintain candidate records'],['Clear communication','Organization','Interest in HR']),
+    J('HR Psychology Intern','Human Resources','Apply psychology to hiring, engagement, and team wellbeing.',['Help design assessments','Support feedback surveys','Research engagement practices'],['Psychology background','Research skills','Empathy']),
+    J('Project Management Intern','Project Management','Keep book projects on schedule across departments.',['Track tasks and deadlines','Run weekly check-ins','Report project status'],['Planning','Spreadsheets or Trello/Notion','Follow-through']),
+    J('Product Management Intern','Product Management','Research what readers want and shape new book ideas.',['Research market trends','Compare competing titles','Help define new products'],['Analytical thinking','Curiosity about books','Clear writing']),
+    J('PR Intern','Public Relations','Build visibility with media, schools, and creators.',['Draft outreach emails','Build contact lists','Track coverage'],['Strong writing','Confidence','Networking']),
+    J('Social Media Content Creator','Marketing','Create posts, reels, and visuals that bring our books to life.',['Make weekly content','Edit short videos','Review post performance'],['Canva or video editing','Creative eye','Platform know-how']),
+    J('Content Writer – Social Media','Marketing','Write captions, scripts, and campaign copy.',['Write captions and scripts','Support campaigns','Keep brand voice consistent'],['Concise writing','Trend awareness','Proofreading']),
+    J('Content Writer – Books','Editorial','Write and develop original book content.',['Draft stories and activities','Revise with editors','Research age-appropriate topics'],['Storytelling','Grammar','Child-friendly writing'])
+  ]
 };
-const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safe=u=>/^(https?:|mailto:)/i.test(u||'')?u:'';
-let cat='All',db=null;
+let cat='All',db=null,tab='books',edit=null;
 
-function cover(b){return `<div class="cover" style="background:${esc(b.color)}">${b.tag?`<span class="badge">${esc(b.tag)}</span>`:''}<i>${esc(b.emoji)}</i><b>${esc(b.title)}</b></div>`}
-function bookCard(b){const u=safe(b.url);return `<article class="book">${cover(b)}<small>${esc(b.cat)}</small><p>${esc(b.desc)}</p>${u?`<a class="btn sm" href="${esc(u)}" target="_blank" rel="noopener">Buy now</a>`:'<span class="btn sm alt" style="text-align:center;cursor:default">Coming soon</span>'}</article>`}
-function render(){
- const s=S.settings;
- $('#tag').textContent=s.tagline;$('#aboutTxt').textContent=s.about;
- $('#mail').textContent=s.email;$('#mail').href='mailto:'+s.email;
- const f=S.books.filter(b=>b.tag);
- $('#feat').innerHTML=f.length?f.map(bookCard).join(''):'<p class="lead">No featured books yet.</p>';
- const cs=['All',...CATS.map(c=>c[0])];
- $('#chips').innerHTML=cs.map(c=>`<button class="chip ${c===cat?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
- const l=S.books.filter(b=>cat==='All'||b.cat===cat);
- $('#shelf').innerHTML=l.length?l.map(bookCard).join(''):'<p class="lead">No books in this category yet. Check back soon.</p>';
- $('#cats').innerHTML=CATS.map(c=>`<button class="cat" data-c="${esc(c[0])}"><span class="e">${c[1]}</span><h3>${esc(c[0])}</h3><p>${esc(c[2])}</p></button>`).join('');
- $('#jobs').innerHTML=S.jobs.length?S.jobs.map((j,i)=>`<article class="job ${j.status==='Open'?'':'closed'}"><div class="meta"><span class="st">${esc(j.status)}</span><span>${esc(j.dept)}</span><span>Remote</span></div><h3>${esc(j.title)}</h3><p>${esc(j.desc)}</p><div class="meta"><span>${esc(j.duration)}</span><span>${esc(j.hours)}</span></div><div class="row"><button class="btn sm alt" data-j="${i}">View details</button>${j.status==='Open'?(safe(j.formUrl||S.settings.formUrl)?`<a class="btn sm" href="${esc(safe(j.formUrl||S.settings.formUrl))}" target="_blank" rel="noopener">Apply now</a>`:`<button class="btn sm" data-a="${i}">Apply now</button>`):'<button class="btn sm" disabled>Closed</button>'}</div></article>`).join(''):'<p>No open roles right now. Please check back soon.</p>';
- const so=[['Instagram',s.instagram],['Facebook',s.facebook],['YouTube',s.youtube]].filter(x=>safe(x[1]));
- $('#socials').innerHTML=so.map(x=>`<a href="${esc(x[1])}" target="_blank" rel="noopener">${x[0]}</a>`).join('')||'<span class="lead">Social links coming soon.</span>';
-}
-function jobModal(i,apply){
- const j=S.jobs[i],fu=safe(j.formUrl||S.settings.formUrl);
- $('#dt').textContent=j.title;
- const L=a=>'<ul>'+(a||[]).map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>';
- $('#dbody').innerHTML=`<div class="meta" style="margin-bottom:8px"><span class="st">${esc(j.status)}</span><span>${esc(j.dept)}</span><span>Remote</span><span>${esc(j.duration)}</span><span>${esc(j.hours)}</span><span>Deadline: ${esc(j.deadline||'Rolling')}</span></div><p>${esc(j.desc)}</p><h4>Key responsibilities</h4>${L(j.resp)}<h4>Required skills</h4>${L(j.skills)}${j.status==='Open'?`${fu?`<p style="margin-top:1.2em"><a class="btn" href="${esc(fu)}" target="_blank" rel="noopener">Apply now</a></p>`:'<div class="note">Application link coming soon.</div>'}`:'<div class="note">Applications for this role are closed.</div>'}`;
- const f=$('#af');
- if(f)f.onsubmit=e=>{e.preventDefault();const d=new FormData(f);location.href=`mailto:${S.settings.email}?subject=${encodeURIComponent('Application: '+j.title)}&body=${encodeURIComponent(`Name: ${d.get('n')}\nEmail: ${d.get('e')}\nPhone: ${d.get('p')}\nResume: ${d.get('r')}\n\n${d.get('w')}`)}`};
- dlg.showModal();
- if(apply&&f)setTimeout(()=>$('#ap').scrollIntoView(),50);
-}
-document.addEventListener('click',e=>{
- const t=e.target.closest('[data-c],[data-j],[data-a]');if(!t)return;
- if(t.dataset.c){cat=t.dataset.c;render();if(t.classList.contains('cat'))$('#books').scrollIntoView()}
- else if(t.dataset.j)jobModal(+t.dataset.j,false);
- else if(t.dataset.a)jobModal(+t.dataset.a,true);
-});
-$('#menu').onclick=()=>$('#links').classList.toggle('open');
-$('#links').onclick=()=>$('#links').classList.remove('open');
-if($('#cf'))$('#cf').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);location.href=`mailto:${S.settings.email}?subject=${encodeURIComponent('Website enquiry from '+d.get('n'))}&body=${encodeURIComponent(d.get('m')+'\n\nReply to: '+d.get('e'))}`};
-
-/* ---------- storage + admin ---------- */
-async function load(){
- try{
-  if(!window.claude||!claude.use)return;
-  db=await claude.use('db');if(!db)return;
-  for(const k of ['settings','books','jobs']){
-   const s=await db.doc('site/'+k).get();
-   if(s.exists){const d=s.data();if(k==='settings')S.settings={...S.settings,...d};else if(Array.isArray(d.items))S[k]=d.items}
+function cover(b){
+  if(b.image){
+    return `<div class="cover photo" style="background:${esc(b.color)}">
+      ${b.tag?`<span class="badge">${esc(b.tag)}</span>`:''}
+      <img src="${esc(b.image)}" alt="${esc(b.title)} book cover" loading="lazy">
+    </div>`;
   }
-  render();
- }catch(err){console.error(err)}
+  return `<div class="cover" style="background:${esc(b.color)}">
+    ${b.tag?`<span class="badge">${esc(b.tag)}</span>`:''}
+    <i>${esc(b.emoji)}</i><b>${esc(b.title)}</b>
+  </div>`;
 }
-async function save(k){
- if(!db){alert('Saving is only available when you are signed in as an editor in Claude.');return false}
- try{await db.doc('site/'+k).set(k==='settings'?S.settings:{items:S[k]});return true}
- catch(e){alert('Could not save. Check that you have editor access and try again.');return false}
+
+function bookCard(b){
+  const u=safe(b.url);
+  return `<article class="book">
+    ${cover(b)}
+    <small>${esc(b.cat)}</small>
+    <p>${esc(b.desc)}</p>
+    ${u?`<a class="btn sm" href="${esc(u)}" target="_blank" rel="noopener">Buy on Amazon</a>`:`<span class="btn sm alt" style="text-align:center;cursor:default">Coming soon</span>`}
+  </article>`;
 }
-const SCHEMA={
-books:[['title','Title'],['cat','Category','sel',CATS.map(c=>c[0])],['desc','Description','area'],['url','Purchase link (https://…)'],['color','Cover colour','color'],['emoji','Cover emoji'],['tag','Badge','sel',['','Featured','New']]],
-jobs:[['title','Job title'],['dept','Department'],['desc','Short description','area'],['resp','Responsibilities (one per line)','lines'],['skills','Required skills (one per line)','lines'],['duration','Internship duration'],['hours','Daily time commitment'],['deadline','Application deadline','date'],['status','Status','sel',['Open','Closed']],['formUrl','Google Form link for this role (optional)']],
-settings:[['email','Contact email'],['instagram','Instagram URL'],['facebook','Facebook URL'],['youtube','YouTube URL'],['formUrl','Default Google Form link for applications'],['tagline','Home page intro','area'],['about','About text','area']]};
-let tab='books',edit=null;
-function fld(f,v){const[k,l,t,o]=f;let val=t==='lines'?(v||[]).join('\n'):(v??'');let c;
- if(t==='sel')c=`<select name="${k}">${o.map(x=>`<option ${x===val?'selected':''} value="${esc(x)}">${esc(x||'None')}</option>`).join('')}</select>`;
- else if(t==='area'||t==='lines')c=`<textarea name="${k}">${esc(val)}</textarea>`;
- else c=`<input name="${k}" type="${t==='color'?'color':t==='date'?'date':'text'}" value="${esc(val||(t==='color'?'#3b9ccf':''))}">`;
- return `<label>${l}${c}</label>`}
-function admin(){
- const b=$('#dbody');$('#dt').textContent='Team dashboard';
- const tabs=['books','jobs','settings'].map(t=>`<button class="chip ${t===tab?'on':''}" data-t="${t}">${{books:'Books',jobs:'Job openings',settings:'Site info'}[t]}</button>`).join('');
- let h=`<div class="tabs">${tabs}</div>`;
- if(!db)h+='<div class="note">Editing is read-only here. Open the site while signed in as an editor to save changes.</div>';
- if(tab==='settings'){h+=`<form class="f" id="ef">${SCHEMA.settings.map(f=>fld(f,S.settings[f[0]])).join('')}<button class="btn" type="submit">Save site info</button></form>`}
- else if(edit!==null){const it=edit==='new'?{}:S[tab][edit];h+=`<form class="f" id="ef">${SCHEMA[tab].map(f=>fld(f,it[f[0]])).join('')}<div style="display:flex;gap:10px"><button class="btn" type="submit">Save</button><button class="btn alt" type="button" id="cn">Cancel</button></div></form>`}
- else{h+=`<button class="btn sm" data-e="new">Add new</button><div style="margin-top:10px">`+S[tab].map((x,i)=>`<div class="arow"><span>${esc(x.title)}${x.status?` (${esc(x.status)})`:''}</span><button data-e="${i}">Edit</button><button data-d="${i}">Delete</button></div>`).join('')+'</div>'}
- b.innerHTML=h;
- const f=$('#ef');if(f)f.onsubmit=async e=>{e.preventDefault();const d=new FormData(f),o={};
-  SCHEMA[tab].forEach(([k,,t])=>{const v=d.get(k)||'';o[k]=t==='lines'?v.split('\n').map(x=>x.trim()).filter(Boolean):v.trim()});
-  if(tab==='settings')Object.assign(S.settings,o);
-  else{if(edit==='new'){o.id='i'+Date.now();S[tab].push(o)}else S[tab][edit]={...S[tab][edit],...o}}
-  if(await save(tab)){edit=null;render();admin()}};
- const c=$('#cn');if(c)c.onclick=()=>{edit=null;admin()};
+
+function render(){
+  const s=S.settings;
+  $('#tag').textContent=s.tagline;
+  $('#aboutTxt').textContent=s.about;
+  $('#mail').textContent=s.email;
+  $('#mail').href='mailto:'+s.email;
+
+  const featured=S.books.filter(b=>b.tag);
+  $('#feat').innerHTML=featured.length?featured.map(bookCard).join(''):'<p class="lead">No featured books yet.</p>';
+
+  const categories=['All',...CATS.map(c=>c[0])];
+  $('#chips').innerHTML=categories.map(c=>`<button class="chip ${c===cat?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+
+  const visible=S.books.filter(b=>cat==='All'||b.cat===cat);
+  $('#shelf').innerHTML=visible.length?visible.map(bookCard).join(''):'<p class="lead">No books in this category yet. Check back soon.</p>';
+
+  $('#cats').innerHTML=CATS.map(c=>`<button class="cat" data-c="${esc(c[0])}"><span class="e">${c[1]}</span><h3>${esc(c[0])}</h3><p>${esc(c[2])}</p></button>`).join('');
+
+  $('#jobs').innerHTML=S.jobs.length?S.jobs.map((j,i)=>`<article class="job ${j.status==='Open'?'':'closed'}">
+    <div class="meta"><span class="st">${esc(j.status)}</span><span>${esc(j.dept)}</span><span>Remote</span></div>
+    <h3>${esc(j.title)}</h3><p>${esc(j.desc)}</p>
+    <div class="meta"><span>${esc(j.duration)}</span><span>${esc(j.hours)}</span></div>
+    <div class="row">
+      <button class="btn sm alt" data-j="${i}">View details</button>
+      ${j.status==='Open'?(safe(j.formUrl||S.settings.formUrl)?`<a class="btn sm" href="${esc(safe(j.formUrl||S.settings.formUrl))}" target="_blank" rel="noopener">Apply now</a>`:`<button class="btn sm" data-a="${i}">Apply now</button>`):'<button class="btn sm" disabled>Closed</button>'}
+    </div>
+  </article>`).join(''):'<p>No open roles right now. Please check back soon.</p>';
+
+  const socials=[['Instagram',s.instagram],['Facebook',s.facebook],['YouTube',s.youtube]].filter(x=>safe(x[1]));
+  $('#socials').innerHTML=socials.map(x=>`<a href="${esc(x[1])}" target="_blank" rel="noopener">${x[0]}</a>`).join('')||'<span class="lead">Social links coming soon.</span>';
 }
-$('#dbody').addEventListener('click',async e=>{
- const t=e.target.closest('[data-t],[data-e],[data-d]');if(!t||!$('#dt').textContent.startsWith('Team'))return;
- if(t.dataset.t){tab=t.dataset.t;edit=null;admin()}
- else if(t.dataset.e){edit=t.dataset.e==='new'?'new':+t.dataset.e;admin()}
- else if(t.dataset.d&&confirm('Delete this item?')){S[tab].splice(+t.dataset.d,1);await save(tab);render();admin()}
+
+function jobModal(i){
+  const j=S.jobs[i];
+  $('#dt').textContent=j.title;
+  const list=a=>'<ul>'+(a||[]).map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>';
+  const applyLink=safe(j.formUrl||S.settings.formUrl);
+  $('#dbody').innerHTML=`<div class="meta" style="margin-bottom:8px">
+    <span class="st">${esc(j.status)}</span><span>${esc(j.dept)}</span><span>Remote</span>
+    <span>${esc(j.duration)}</span><span>${esc(j.hours)}</span>
+    <span>Deadline: ${esc(j.deadline||'Rolling')}</span>
+  </div>
+  <p>${esc(j.desc)}</p>
+  <h4>Key responsibilities</h4>${list(j.resp)}
+  <h4>Required skills</h4>${list(j.skills)}
+  ${j.status==='Open'?(applyLink?`<p style="margin-top:1.2em"><a class="btn" href="${esc(applyLink)}" target="_blank" rel="noopener">Apply now</a></p>`:'<div class="note">Application link coming soon.</div>'):'<div class="note">Applications for this role are closed.</div>'}`;
+  $('#dlg').showModal();
+}
+
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-c],[data-j],[data-a]');
+  if(!t)return;
+  if(t.dataset.c){
+    cat=t.dataset.c;render();
+    if(t.classList.contains('cat'))$('#books').scrollIntoView({behavior:'smooth'});
+  }else if(t.dataset.j!==undefined)jobModal(Number(t.dataset.j));
+  else if(t.dataset.a!==undefined)jobModal(Number(t.dataset.a));
 });
-$('#adminBtn').onclick=async()=>{
- let ok=false;try{const u=window.claude&&await claude.use('user');ok=u?await u.canEdit():false}catch(e){}
- if(!ok){alert('The team dashboard is for editors only. Open this site signed in with an editor account.');return}
- tab='books';edit=null;admin();dlg.showModal();
+
+$('#menu').addEventListener('click',()=>{
+  const open=$('#links').classList.toggle('open');
+  $('#menu').setAttribute('aria-expanded',String(open));
+});
+$('#links').addEventListener('click',e=>{
+  if(e.target.closest('a'))$('#links').classList.remove('open');
+});
+$('#closeDlg').addEventListener('click',()=>$('#dlg').close());
+$('#dlg').addEventListener('click',e=>{
+  if(e.target===$('#dlg'))$('#dlg').close();
+});
+
+/* Optional editor storage integration.
+   This section only works in an environment that provides window.claude.use(). */
+async function load(){
+  try{
+    if(!window.claude||!claude.use)return;
+    db=await claude.use('db');
+    if(!db)return;
+    for(const key of ['settings','books','jobs']){
+      const snap=await db.doc('site/'+key).get();
+      if(snap.exists){
+        const data=snap.data();
+        if(key==='settings')S.settings={...S.settings,...data};
+        else if(Array.isArray(data.items))S[key]=data.items;
+      }
+    }
+    render();
+  }catch(err){console.error('Could not load editor data:',err);}
+}
+
+async function save(key){
+  if(!db){
+    alert('Saving is only available when the site is opened in an editor-enabled environment.');
+    return false;
+  }
+  try{
+    await db.doc('site/'+key).set(key==='settings'?S.settings:{items:S[key]});
+    return true;
+  }catch(err){
+    alert('Could not save. Check editor access and try again.');
+    console.error(err);
+    return false;
+  }
+}
+
+const SCHEMA={
+  books:[
+    ['title','Title'],['cat','Category','sel',CATS.map(c=>c[0])],
+    ['desc','Description','area'],['url','Amazon / purchase link'],
+    ['image','Cover image path'],['color','Cover colour','color'],
+    ['emoji','Cover emoji'],['tag','Badge','sel',['','Featured','New','New Release']]
+  ],
+  jobs:[
+    ['title','Job title'],['dept','Department'],['desc','Short description','area'],
+    ['resp','Responsibilities (one per line)','lines'],['skills','Required skills (one per line)','lines'],
+    ['duration','Internship duration'],['hours','Daily time commitment'],
+    ['deadline','Application deadline','date'],['status','Status','sel',['Open','Closed']],
+    ['formUrl','Google Form link for this role (optional)']
+  ],
+  settings:[
+    ['email','Contact email'],['instagram','Instagram URL'],['facebook','Facebook URL'],
+    ['youtube','YouTube URL'],['formUrl','Default Google Form link for applications'],
+    ['tagline','Home page intro','area'],['about','About text','area']
+  ]
 };
-const dlg=$('#dlg');
-render();load();
+
+function fieldMarkup(field,value){
+  const [key,label,type,options]=field;
+  const val=type==='lines'?(value||[]).join('\n'):(value??'');
+  let control;
+  if(type==='sel'){
+    control=`<select name="${key}">${options.map(option=>`<option value="${esc(option)}" ${option===val?'selected':''}>${esc(option||'None')}</option>`).join('')}</select>`;
+  }else if(type==='area'||type==='lines'){
+    control=`<textarea name="${key}">${esc(val)}</textarea>`;
+  }else{
+    const inputType=type==='color'?'color':type==='date'?'date':'text';
+    control=`<input name="${key}" type="${inputType}" value="${esc(val||(type==='color'?'#3b9ccf':''))}">`;
+  }
+  return `<label>${label}${control}</label>`;
+}
+
+function admin(){
+  const body=$('#dbody');
+  $('#dt').textContent='Team dashboard';
+  const tabs=['books','jobs','settings'].map(key=>`<button class="chip ${key===tab?'on':''}" data-t="${key}">${{books:'Books',jobs:'Job openings',settings:'Site info'}[key]}</button>`).join('');
+  let markup=`<div class="tabs">${tabs}</div>`;
+  if(!db)markup+='<div class="note">Editing is read-only here. Open the site in an editor-enabled environment to save changes.</div>';
+
+  if(tab==='settings'){
+    markup+=`<form class="f" id="ef">${SCHEMA.settings.map(f=>fieldMarkup(f,S.settings[f[0]])).join('')}<button class="btn" type="submit">Save site info</button></form>`;
+  }else if(edit!==null){
+    const item=edit==='new'?{}:S[tab][edit];
+    markup+=`<form class="f" id="ef">${SCHEMA[tab].map(f=>fieldMarkup(f,item[f[0]])).join('')}
+      <div style="display:flex;gap:10px"><button class="btn" type="submit">Save</button><button class="btn alt" type="button" id="cn">Cancel</button></div>
+    </form>`;
+  }else{
+    markup+=`<button class="btn sm" data-e="new">Add new</button><div style="margin-top:10px">`;
+    markup+=S[tab].map((item,index)=>`<div class="arow"><span>${esc(item.title||'Untitled')}${item.status?` (${esc(item.status)})`:''}</span><button data-e="${index}">Edit</button><button data-d="${index}">Delete</button></div>`).join('');
+    markup+='</div>';
+  }
+  body.innerHTML=markup;
+
+  const form=$('#ef');
+  if(form)form.onsubmit=async event=>{
+    event.preventDefault();
+    const data=new FormData(form),object={};
+    SCHEMA[tab].forEach(([key,,type])=>{
+      const value=data.get(key)||'';
+      object[key]=type==='lines'?value.split('\n').map(x=>x.trim()).filter(Boolean):value.trim();
+    });
+    if(tab==='settings')Object.assign(S.settings,object);
+    else if(edit==='new'){object.id='i'+Date.now();S[tab].push(object);}
+    else S[tab][edit]={...S[tab][edit],...object};
+
+    if(await save(tab)){edit=null;render();admin();}
+  };
+
+  const cancel=$('#cn');
+  if(cancel)cancel.onclick=()=>{edit=null;admin();};
+}
+
+$('#dbody').addEventListener('click',async event=>{
+  const target=event.target.closest('[data-t],[data-e],[data-d]');
+  if(!target||!$('#dt').textContent.startsWith('Team'))return;
+  if(target.dataset.t){tab=target.dataset.t;edit=null;admin();}
+  else if(target.dataset.e!==undefined){edit=target.dataset.e==='new'?'new':Number(target.dataset.e);admin();}
+  else if(target.dataset.d!==undefined&&confirm('Delete this item?')){
+    S[tab].splice(Number(target.dataset.d),1);
+    await save(tab);render();admin();
+  }
+});
+
+$('#adminBtn').addEventListener('click',async()=>{
+  let allowed=false;
+  try{
+    const user=window.claude&&await claude.use('user');
+    allowed=user?await user.canEdit():false;
+  }catch(error){console.error(error);}
+  if(!allowed){
+    alert('The team dashboard is for editors only. Open this site signed in with an editor account.');
+    return;
+  }
+  tab='books';edit=null;admin();$('#dlg').showModal();
+});
+
+render();
+load();
 </script>
 </body>
 </html>
